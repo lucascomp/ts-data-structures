@@ -68,8 +68,9 @@ describe("Stack", () => {
       stack.push(1);
       stack.push(2);
       stack.push(3);
+      stack.pop();
 
-      expect(stack.size()).toBe(3);
+      expect(stack.size()).toBe(2);
     });
   });
 
@@ -78,8 +79,9 @@ describe("Stack", () => {
       stack.push(1);
       stack.push(2);
       stack.push(3);
+      stack.pop();
 
-      expect(stack.print()).toBe("[1,2,3]");
+      expect(stack.print()).toBe("[1,2]");
     });
   });
 });
