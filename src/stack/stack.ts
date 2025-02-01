@@ -5,6 +5,10 @@ export class Stack<T> {
     this.stack = [];
   }
 
+  get length() {
+    return this.stack.length;
+  }
+
   push(value: T) {
     this.stack.push(value);
   }
@@ -14,22 +18,22 @@ export class Stack<T> {
   }
 
   peek() {
-    if (this.isEmpty()) {
-      return undefined;
+    if (!this.isEmpty()) {
+      return this.stack[this.length - 1];
     }
-
-    return this.stack[this.size() - 1];
   }
 
   isEmpty() {
-    return this.size() === 0;
-  }
-
-  size() {
-    return this.stack.length;
+    return this.length === 0;
   }
 
   print() {
     return `[${this.stack.join(",")}]`;
+  }
+
+  *[Symbol.iterator](): Generator<T> {
+    for (let i = 0; i < this.stack.length; i++) {
+      yield this.stack[i];
+    }
   }
 }

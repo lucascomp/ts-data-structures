@@ -7,6 +7,10 @@ export class Queue<T> {
     this.startIndex = 0;
   }
 
+  get length() {
+    return this.queue.length - this.startIndex;
+  }
+
   enqueue(value: T) {
     this.queue.push(value);
   }
@@ -19,22 +23,22 @@ export class Queue<T> {
   }
 
   peek() {
-    if (this.isEmpty()) {
-      return undefined;
+    if (!this.isEmpty()) {
+      return this.queue[this.startIndex];
     }
-
-    return this.queue[this.startIndex];
   }
 
   isEmpty() {
-    return this.size() === 0;
-  }
-
-  size() {
-    return this.queue.length - this.startIndex;
+    return this.length === 0;
   }
 
   print() {
     return `[${this.queue.slice(this.startIndex).join(",")}]`;
+  }
+
+  *[Symbol.iterator](): Generator<T> {
+    for (let i = 0; i < this.queue.length; i++) {
+      yield this.queue[i];
+    }
   }
 }
