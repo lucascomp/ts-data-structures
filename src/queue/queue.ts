@@ -1,44 +1,15 @@
-export class Queue<T> {
-  private queue: Array<T>;
-  private startIndex: number;
+import { Nullable } from "../common/nullable";
 
-  constructor() {
-    this.queue = [];
-    this.startIndex = 0;
-  }
+export interface Queue<T> extends Iterable<T> {
+  enqueue(value: T): void;
 
-  get length() {
-    return this.queue.length - this.startIndex;
-  }
+  dequeue(): Nullable<T>;
 
-  enqueue(value: T) {
-    this.queue.push(value);
-  }
+  peek(): Nullable<T>;
 
-  dequeue() {
-    const dequeued = this.queue[this.startIndex];
-    this.startIndex++;
+  size(): number;
 
-    return dequeued;
-  }
+  isEmpty(): boolean;
 
-  peek() {
-    if (!this.isEmpty()) {
-      return this.queue[this.startIndex];
-    }
-  }
-
-  isEmpty() {
-    return this.length === 0;
-  }
-
-  print() {
-    return `[${this.queue.slice(this.startIndex).join(",")}]`;
-  }
-
-  *[Symbol.iterator](): Generator<T> {
-    for (let i = 0; i < this.queue.length; i++) {
-      yield this.queue[i];
-    }
-  }
+  print(): string;
 }

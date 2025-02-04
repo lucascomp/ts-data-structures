@@ -1,39 +1,15 @@
-export class Stack<T> {
-  private stack: Array<T>;
+import { Nullable } from "../common/nullable";
 
-  constructor() {
-    this.stack = [];
-  }
+export interface Stack<T> extends Iterable<T> {
+  push(value: T): void;
 
-  get length() {
-    return this.stack.length;
-  }
+  pop(): Nullable<T>;
 
-  push(value: T) {
-    this.stack.push(value);
-  }
+  peek(): Nullable<T>;
 
-  pop() {
-    return this.stack.pop();
-  }
+  size(): number;
 
-  peek() {
-    if (!this.isEmpty()) {
-      return this.stack[this.length - 1];
-    }
-  }
+  isEmpty(): boolean;
 
-  isEmpty() {
-    return this.length === 0;
-  }
-
-  print() {
-    return `[${this.stack.join(",")}]`;
-  }
-
-  *[Symbol.iterator](): Generator<T> {
-    for (let i = 0; i < this.stack.length; i++) {
-      yield this.stack[i];
-    }
-  }
+  print(): string;
 }

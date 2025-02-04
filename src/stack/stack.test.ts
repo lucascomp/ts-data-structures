@@ -1,11 +1,16 @@
+import { ArrayStack } from "./array-stack";
+import { LinkedListStack } from "./linked-list-stack";
 import { Stack } from "./stack";
 
-describe("Stack", () => {
+describe.each([
+  ["ArrayStack", () => new ArrayStack<number>()],
+  ["LinkedListStack", () => new LinkedListStack<number>()],
+])("%s", (_, createStack) => {
   let stack: Stack<number>;
 
   describe("when stack is empty", () => {
     beforeEach(() => {
-      stack = new Stack();
+      stack = createStack();
     });
 
     it("should push element correctly", () => {
@@ -15,15 +20,15 @@ describe("Stack", () => {
     });
 
     it("should not pop any element", () => {
-      expect(stack.pop()).toBeUndefined();
+      expect(stack.pop()).toBeNull();
     });
 
     it("should not peek any element", () => {
-      expect(stack.peek()).toBeUndefined();
+      expect(stack.peek()).toBeNull();
     });
 
-    it("should have length of 0", () => {
-      expect(stack.length).toBe(0);
+    it("should have size of 0", () => {
+      expect(stack.size()).toBe(0);
     });
 
     it("should be marked as empty", () => {
@@ -41,7 +46,7 @@ describe("Stack", () => {
 
   describe("when stack has a single element", () => {
     beforeEach(() => {
-      stack = new Stack();
+      stack = createStack();
       stack.push(1);
     });
 
@@ -53,14 +58,15 @@ describe("Stack", () => {
 
     it("should pop element correctly", () => {
       expect(stack.pop()).toBe(1);
+      expect(stack.peek()).toBeNull();
     });
 
     it("should peek element correctly", () => {
       expect(stack.peek()).toBe(1);
     });
 
-    it("should have length of 1", () => {
-      expect(stack.length).toBe(1);
+    it("should have size of 1", () => {
+      expect(stack.size()).toBe(1);
     });
 
     it("should not be marked as empty", () => {
@@ -78,7 +84,7 @@ describe("Stack", () => {
 
   describe("when stack has multiple elements", () => {
     beforeEach(() => {
-      stack = new Stack();
+      stack = createStack();
       stack.push(1);
       stack.push(2);
       stack.push(3);
@@ -92,14 +98,15 @@ describe("Stack", () => {
 
     it("should pop element correctly", () => {
       expect(stack.pop()).toBe(3);
+      expect(stack.peek()).toBe(2);
     });
 
     it("should peek element correctly", () => {
       expect(stack.peek()).toBe(3);
     });
 
-    it("should have correct length", () => {
-      expect(stack.length).toBe(3);
+    it("should have correct size", () => {
+      expect(stack.size()).toBe(3);
     });
 
     it("should not be marked as empty", () => {

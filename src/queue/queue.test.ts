@@ -1,125 +1,133 @@
+import { LinkedListQueue } from "./linked-list-queue";
 import { Queue } from "./queue";
 
-describe("Queue", () => {
-  let queue: Queue<number>;
+describe.each([["LinkedListQueue", () => new LinkedListQueue<number>()]])(
+  "%s",
+  (_, createQueue) => {
+    let queue: Queue<number>;
 
-  describe("when queue is empty", () => {
-    beforeEach(() => {
-      queue = new Queue();
+    describe("when queue is empty", () => {
+      beforeEach(() => {
+        queue = createQueue();
+      });
+
+      it("should not peek any element", () => {
+        expect(queue.peek()).toBeNull();
+      });
+
+      it("should not dequeue any element", () => {
+        expect(queue.dequeue()).toBeNull();
+      });
+
+      it("should enqueue element correctly", () => {
+        queue.enqueue(1);
+
+        expect(queue.peek()).toBe(1);
+      });
+
+      it("should have size of 0", () => {
+        expect(queue.size()).toBe(0);
+      });
+
+      it("should be marked as empty", () => {
+        expect(queue.isEmpty()).toBe(true);
+      });
+
+      it("should print empty queue", () => {
+        expect(queue.print()).toBe("[]");
+      });
+
+      it("should not iterate over any values", () => {
+        expect([...queue]).toHaveLength(0);
+      });
     });
 
-    it("should enqueue element correctly", () => {
-      queue.enqueue(1);
+    describe("when queue has a single element", () => {
+      beforeEach(() => {
+        queue = createQueue();
+        queue.enqueue(1);
+      });
 
-      expect(queue.peek()).toBe(1);
+      it("should peek first element", () => {
+        expect(queue.peek()).toBe(1);
+      });
+
+      it("should dequeue element from the beginning", () => {
+        expect(queue.dequeue()).toBe(1);
+        expect(queue.peek()).toBeNull();
+      });
+
+      it("should enqueue element at the end", () => {
+        queue.enqueue(2);
+
+        expect(queue.dequeue()).toBe(1);
+        expect(queue.dequeue()).toBe(2);
+        expect(queue.dequeue()).toBeNull();
+      });
+
+      it("should have size of 1", () => {
+        expect(queue.size()).toBe(1);
+      });
+
+      it("should not be marked as empty", () => {
+        expect(queue.isEmpty()).toBe(false);
+      });
+
+      it("should print queue correctly", () => {
+        expect(queue.print()).toBe("[1]");
+      });
+
+      it("should iterate over queue", () => {
+        expect([...queue]).toEqual([1]);
+      });
     });
 
-    it("should not dequeue any element", () => {
-      expect(queue.dequeue()).toBeUndefined();
-    });
+    describe("when queue has multiple elements", () => {
+      beforeEach(() => {
+        queue = createQueue();
+        queue.enqueue(4);
+        queue.enqueue(5);
+        queue.enqueue(1);
+        queue.dequeue();
+        queue.enqueue(2);
+        queue.enqueue(3);
+        queue.dequeue();
+      });
 
-    it("should not peek any element", () => {
-      expect(queue.peek()).toBeUndefined();
-    });
+      it("should peek first element", () => {
+        expect(queue.peek()).toBe(1);
+      });
 
-    it("should have length of 0", () => {
-      expect(queue.length).toBe(0);
-    });
+      it("should dequeue element from the beginning", () => {
+        expect(queue.dequeue()).toBe(1);
+        expect(queue.peek()).toBe(2);
+      });
 
-    it("should be marked as empty", () => {
-      expect(queue.isEmpty()).toBe(true);
-    });
+      it("should enqueue element at the end", () => {
+        queue.enqueue(4);
 
-    it("should print empty queue", () => {
-      expect(queue.print()).toBe("[]");
-    });
+        expect(queue.dequeue()).toBe(1);
+        expect(queue.dequeue()).toBe(2);
+        expect(queue.dequeue()).toBe(3);
+        expect(queue.dequeue()).toBe(4);
+        expect(queue.dequeue()).toBeNull();
+      });
 
-    it("should not iterate over any values", () => {
-      expect([...queue]).toHaveLength(0);
-    });
-  });
+      it("should have correct size", () => {
+        expect(queue.size()).toBe(3);
+      });
 
-  describe("when queue has a single element", () => {
-    beforeEach(() => {
-      queue = new Queue();
-      queue.enqueue(1);
-    });
+      it("should not be marked as empty", () => {
+        expect(queue.isEmpty()).toBe(false);
+      });
 
-    it("should enqueue element at the beginning", () => {
-      expect(queue.peek()).toBe(1);
-      queue.enqueue(2);
-      expect(queue.peek()).toBe(1);
-    });
+      it("should print queue correctly", () => {
+        expect(queue.print()).toBe("[1,2,3]");
+      });
 
-    it("should dequeue element correctly", () => {
-      expect(queue.peek()).toBe(1);
-      expect(queue.dequeue()).toBe(1);
-      expect(queue.peek()).toBeUndefined();
+      it("should iterate over queue", () => {
+        expect([...queue]).toEqual([1, 2, 3]);
+      });
     });
-
-    it("should peek first element", () => {
-      expect(queue.peek()).toBe(1);
-    });
-
-    it("should have length of 1", () => {
-      expect(queue.length).toBe(1);
-    });
-
-    it("should not be marked as empty", () => {
-      expect(queue.isEmpty()).toBe(false);
-    });
-
-    it("should print queue correctly", () => {
-      expect(queue.print()).toBe("[1]");
-    });
-
-    it("should iterate over queue", () => {
-      expect([...queue]).toEqual([1]);
-    });
-  });
-
-  describe("when queue has multiple elements", () => {
-    beforeEach(() => {
-      queue = new Queue();
-      queue.enqueue(1);
-      queue.enqueue(2);
-      queue.enqueue(3);
-    });
-
-    it("should enqueue element at the beginning", () => {
-      queue.enqueue(4);
-
-      expect(queue.dequeue()).toBe(1);
-      expect(queue.dequeue()).toBe(2);
-      expect(queue.dequeue()).toBe(3);
-      expect(queue.dequeue()).toBe(4);
-      expect(queue.dequeue()).toBeUndefined();
-    });
-
-    it("should dequeue element at the beginning", () => {
-      expect(queue.peek()).toBe(1);
-      expect(queue.dequeue()).toBe(1);
-      expect(queue.peek()).toBe(2);
-    });
-
-    it("should peek first element", () => {
-      expect(queue.peek()).toBe(1);
-    });
-
-    it("should have correct length", () => {
-      expect(queue.length).toBe(3);
-    });
-
-    it("should not be marked as empty", () => {
-      expect(queue.isEmpty()).toBe(false);
-    });
-
-    it("should print queue correctly", () => {
-      expect(queue.print()).toBe("[1,2,3]");
-    });
-
-    it("should iterate over queue", () => {
-      expect([...queue]).toEqual([1, 2, 3]);
-    });
-  });
-});
+  }
+);
