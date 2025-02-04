@@ -8,16 +8,16 @@ export class ArrayStack<T> implements Stack<T> {
     this.list = [];
   }
 
+  peek(): Nullable<T> {
+    return this.list.at(-1) ?? null;
+  }
+
   push(value: T): void {
     this.list.push(value);
   }
 
   pop(): Nullable<T> {
     return this.list.pop() ?? null;
-  }
-
-  peek(): Nullable<T> {
-    return this.list.at(-1) ?? null;
   }
 
   size(): number {

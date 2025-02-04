@@ -19,7 +19,7 @@ describe.each([["LinkedListQueue", () => new LinkedListQueue<number>()]])(
         expect(queue.dequeue()).toBeNull();
       });
 
-      it("should enqueue element correctly", () => {
+      it("should enqueue element", () => {
         queue.enqueue(1);
 
         expect(queue.peek()).toBe(1);
@@ -73,7 +73,7 @@ describe.each([["LinkedListQueue", () => new LinkedListQueue<number>()]])(
         expect(queue.isEmpty()).toBe(false);
       });
 
-      it("should print queue correctly", () => {
+      it("should print queue", () => {
         expect(queue.print()).toBe("[1]");
       });
 
@@ -121,7 +121,7 @@ describe.each([["LinkedListQueue", () => new LinkedListQueue<number>()]])(
         expect(queue.isEmpty()).toBe(false);
       });
 
-      it("should print queue correctly", () => {
+      it("should print queue", () => {
         expect(queue.print()).toBe("[1,2,3]");
       });
 

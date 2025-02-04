@@ -13,7 +13,11 @@ describe.each([
       stack = createStack();
     });
 
-    it("should push element correctly", () => {
+    it("should not peek any element", () => {
+      expect(stack.peek()).toBeNull();
+    });
+
+    it("should push element", () => {
       stack.push(1);
 
       expect(stack.peek()).toBe(1);
@@ -21,10 +25,6 @@ describe.each([
 
     it("should not pop any element", () => {
       expect(stack.pop()).toBeNull();
-    });
-
-    it("should not peek any element", () => {
-      expect(stack.peek()).toBeNull();
     });
 
     it("should have size of 0", () => {
@@ -50,19 +50,19 @@ describe.each([
       stack.push(1);
     });
 
+    it("should peek element", () => {
+      expect(stack.peek()).toBe(1);
+    });
+
     it("should push element at the end", () => {
       stack.push(2);
 
       expect(stack.peek()).toBe(2);
     });
 
-    it("should pop element correctly", () => {
+    it("should pop element", () => {
       expect(stack.pop()).toBe(1);
       expect(stack.peek()).toBeNull();
-    });
-
-    it("should peek element correctly", () => {
-      expect(stack.peek()).toBe(1);
     });
 
     it("should have size of 1", () => {
@@ -73,7 +73,7 @@ describe.each([
       expect(stack.isEmpty()).toBe(false);
     });
 
-    it("should print stack correctly", () => {
+    it("should print stack", () => {
       expect(stack.print()).toEqual("[1]");
     });
 
@@ -90,19 +90,19 @@ describe.each([
       stack.push(3);
     });
 
-    it("should push element correctly", () => {
+    it("should peek element", () => {
+      expect(stack.peek()).toBe(3);
+    });
+
+    it("should push element", () => {
       stack.push(4);
 
       expect(stack.peek()).toBe(4);
     });
 
-    it("should pop element correctly", () => {
+    it("should pop element", () => {
       expect(stack.pop()).toBe(3);
       expect(stack.peek()).toBe(2);
-    });
-
-    it("should peek element correctly", () => {
-      expect(stack.peek()).toBe(3);
     });
 
     it("should have correct size", () => {
@@ -113,7 +113,7 @@ describe.each([
       expect(stack.isEmpty()).toBe(false);
     });
 
-    it("should print stack correctly", () => {
+    it("should print stack", () => {
       expect(stack.print()).toEqual("[1,2,3]");
     });
 

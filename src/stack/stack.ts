@@ -1,11 +1,11 @@
 import { Nullable } from "../common/nullable";
 
 export interface Stack<T> extends Iterable<T> {
+  peek(): Nullable<T>;
+
   push(value: T): void;
 
   pop(): Nullable<T>;
-
-  peek(): Nullable<T>;
 
   size(): number;
 
