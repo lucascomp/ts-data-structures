@@ -1,13 +1,13 @@
 import { Nullable } from "../common/nullable";
+import { DoublyLinkedList } from "../linked-list/doubly-linked-list";
 import { LinkedList } from "../linked-list/linked-list";
-import { SinglyLinkedList } from "../linked-list/singly-linked-list";
 import { Stack } from "./stack";
 
 export class LinkedListStack<T> implements Stack<T> {
   private list: LinkedList<T>;
 
   constructor() {
-    this.list = new SinglyLinkedList();
+    this.list = new DoublyLinkedList();
   }
 
   peek(): Nullable<T> {
