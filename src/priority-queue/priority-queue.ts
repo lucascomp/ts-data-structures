@@ -10,6 +10,4 @@ export interface PriorityQueue<T> extends Iterable<T> {
   size(): number;
 
   isEmpty(): boolean;
-
-  toString(): string;
 }

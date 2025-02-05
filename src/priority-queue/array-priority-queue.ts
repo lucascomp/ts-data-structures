@@ -14,16 +14,11 @@ export class ArrayPriorityQueue<T> implements PriorityQueue<T> {
   }
 
   enqueue(value: T): void {
-    let index = 0;
+    const index = this.list.findIndex(
+      (item) => this.compareFn(item, value) >= 0,
+    );
 
-    while (
-      index < this.list.length &&
-      this.compareFn(this.list[index], value) < 0
-    ) {
-      index++;
-    }
-
-    this.list.splice(index, 0, value);
+    this.list.splice(index === -1 ? this.list.length : index, 0, value);
   }
 
   dequeue(): Nullable<T> {
@@ -36,10 +31,6 @@ export class ArrayPriorityQueue<T> implements PriorityQueue<T> {
 
   isEmpty(): boolean {
     return this.list.length === 0;
-  }
-
-  toString(): string {
-    return `[${this.list.join(',')}]`;
   }
 
   *[Symbol.iterator](): Generator<T> {
