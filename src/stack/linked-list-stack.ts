@@ -1,10 +1,9 @@
 import { Nullable } from '../common/nullable';
 import { DoublyLinkedList } from '../linked-list/doubly-linked-list';
-import { LinkedList } from '../linked-list/linked-list';
 import { Stack } from './stack';
 
 export class LinkedListStack<T> implements Stack<T> {
-  private list: LinkedList<T>;
+  private list: DoublyLinkedList<T>;
 
   constructor() {
     this.list = new DoublyLinkedList();
@@ -15,7 +14,7 @@ export class LinkedListStack<T> implements Stack<T> {
   }
 
   push(value: T): void {
-    return this.list.addLast(value);
+    this.list.addLast(value);
   }
 
   pop(): Nullable<T> {

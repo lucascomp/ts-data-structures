@@ -1,10 +1,9 @@
 import { Nullable } from '../common/nullable';
-import { LinkedList } from '../linked-list/linked-list';
 import { SinglyLinkedList } from '../linked-list/singly-linked-list';
 import { Queue } from './queue';
 
 export class LinkedListQueue<T> implements Queue<T> {
-  private list: LinkedList<T>;
+  private list: SinglyLinkedList<T>;
 
   constructor() {
     this.list = new SinglyLinkedList();
@@ -15,7 +14,7 @@ export class LinkedListQueue<T> implements Queue<T> {
   }
 
   enqueue(value: T): void {
-    return this.list.addLast(value);
+    this.list.addLast(value);
   }
 
   dequeue(): Nullable<T> {
