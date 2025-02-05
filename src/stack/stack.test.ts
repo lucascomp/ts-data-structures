@@ -36,7 +36,7 @@ describe.each([
     });
 
     it("should print empty stack", () => {
-      expect(stack.print()).toBe("[]");
+      expect(stack.toString()).toBe("[]");
     });
 
     it("should not iterate over any values", () => {
@@ -74,7 +74,7 @@ describe.each([
     });
 
     it("should print stack", () => {
-      expect(stack.print()).toEqual("[1]");
+      expect(stack.toString()).toEqual("[1]");
     });
 
     it("should not iterate over any values", () => {
@@ -114,7 +114,7 @@ describe.each([
     });
 
     it("should print stack", () => {
-      expect(stack.print()).toEqual("[1,2,3]");
+      expect(stack.toString()).toEqual("[1,2,3]");
     });
 
     it("should not iterate over any values", () => {

@@ -28,7 +28,7 @@ export class ArrayStack<T> implements Stack<T> {
     return this.list.length === 0;
   }
 
-  print(): string {
+  toString(): string {
     return `[${this.list.join(",")}]`;
   }
 

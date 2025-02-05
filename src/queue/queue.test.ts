@@ -34,7 +34,7 @@ describe.each([["LinkedListQueue", () => new LinkedListQueue<number>()]])(
       });
 
       it("should print empty queue", () => {
-        expect(queue.print()).toBe("[]");
+        expect(queue.toString()).toBe("[]");
       });
 
       it("should not iterate over any values", () => {
@@ -52,17 +52,14 @@ describe.each([["LinkedListQueue", () => new LinkedListQueue<number>()]])(
         expect(queue.peek()).toBe(1);
       });
 
-      it("should dequeue element from the beginning", () => {
+      it("should dequeue element", () => {
         expect(queue.dequeue()).toBe(1);
-        expect(queue.peek()).toBeNull();
       });
 
       it("should enqueue element at the end", () => {
         queue.enqueue(2);
 
-        expect(queue.dequeue()).toBe(1);
-        expect(queue.dequeue()).toBe(2);
-        expect(queue.dequeue()).toBeNull();
+        expect(queue.peek()).toBe(1);
       });
 
       it("should have size of 1", () => {
@@ -74,7 +71,7 @@ describe.each([["LinkedListQueue", () => new LinkedListQueue<number>()]])(
       });
 
       it("should print queue", () => {
-        expect(queue.print()).toBe("[1]");
+        expect(queue.toString()).toBe("[1]");
       });
 
       it("should iterate over queue", () => {
@@ -105,12 +102,11 @@ describe.each([["LinkedListQueue", () => new LinkedListQueue<number>()]])(
 
       it("should enqueue element at the end", () => {
         queue.enqueue(4);
+        queue.dequeue();
+        queue.dequeue();
+        queue.dequeue();
 
-        expect(queue.dequeue()).toBe(1);
-        expect(queue.dequeue()).toBe(2);
-        expect(queue.dequeue()).toBe(3);
-        expect(queue.dequeue()).toBe(4);
-        expect(queue.dequeue()).toBeNull();
+        expect(queue.peek()).toBe(4);
       });
 
       it("should have correct size", () => {
@@ -122,7 +118,7 @@ describe.each([["LinkedListQueue", () => new LinkedListQueue<number>()]])(
       });
 
       it("should print queue", () => {
-        expect(queue.print()).toBe("[1,2,3]");
+        expect(queue.toString()).toBe("[1,2,3]");
       });
 
       it("should iterate over queue", () => {

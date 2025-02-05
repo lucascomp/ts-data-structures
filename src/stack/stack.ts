@@ -11,5 +11,5 @@ export interface Stack<T> extends Iterable<T> {
 
   isEmpty(): boolean;
 
-  print(): string;
+  toString(): string;
 }

@@ -83,7 +83,7 @@ export class SinglyLinkedList<T> implements LinkedList<T> {
     return this.length === 0;
   }
 
-  print(): string {
+  toString(): string {
     return `[${[...this].join(",")}]`;
   }
 

@@ -30,8 +30,8 @@ export class LinkedListStack<T> implements Stack<T> {
     return this.list.isEmpty();
   }
 
-  print(): string {
-    return this.list.print();
+  toString(): string {
+    return this.list.toString();
   }
 
   *[Symbol.iterator](): Generator<T> {

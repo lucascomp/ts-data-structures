@@ -17,5 +17,5 @@ export interface LinkedList<T> extends Iterable<T> {
 
   isEmpty(): boolean;
 
-  print(): string;
+  toString(): string;
 }

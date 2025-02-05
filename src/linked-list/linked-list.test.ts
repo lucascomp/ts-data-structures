@@ -49,7 +49,7 @@ describe.each([
     });
 
     it("should print empty list", () => {
-      expect(list.print()).toBe("[]");
+      expect(list.toString()).toBe("[]");
     });
 
     it("should not iterate over any values", () => {
@@ -104,7 +104,7 @@ describe.each([
     });
 
     it("should print list", () => {
-      expect(list.print()).toBe("[1]");
+      expect(list.toString()).toBe("[1]");
     });
 
     it("should iterate over list", () => {
@@ -165,7 +165,7 @@ describe.each([
     });
 
     it("should print list", () => {
-      expect(list.print()).toBe("[1,2,3]");
+      expect(list.toString()).toBe("[1,2,3]");
     });
 
     it("should iterate over list", () => {
