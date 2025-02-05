@@ -1,8 +1,8 @@
-import { Nullable } from "../common/nullable";
-import { Stack } from "./stack";
+import { Nullable } from '../common/nullable';
+import { Stack } from './stack';
 
 export class ArrayStack<T> implements Stack<T> {
-  private list: Array<T>;
+  private list: T[];
 
   constructor() {
     this.list = [];
@@ -29,7 +29,7 @@ export class ArrayStack<T> implements Stack<T> {
   }
 
   toString(): string {
-    return `[${this.list.join(",")}]`;
+    return `[${this.list.join(',')}]`;
   }
 
   *[Symbol.iterator](): Generator<T> {

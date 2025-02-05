@@ -1,16 +1,16 @@
-import { Comparator } from "../common/comparator";
-import { Nullable } from "../common/nullable";
-import { PriorityQueue } from "./priority-queue";
+import { Comparator } from '../common/comparator';
+import { Nullable } from '../common/nullable';
+import { PriorityQueue } from './priority-queue';
 
 export class ArrayPriorityQueue<T> implements PriorityQueue<T> {
-  private list: Array<T>;
+  private list: T[];
 
   constructor(private compareFn: Comparator<T>) {
     this.list = [];
   }
 
   peek(): Nullable<T> {
-    return this.list.at(0) ?? null;
+    return this.list[0] ?? null;
   }
 
   enqueue(value: T): void {
@@ -18,7 +18,7 @@ export class ArrayPriorityQueue<T> implements PriorityQueue<T> {
 
     while (
       index < this.list.length &&
-      this.compareFn(this.list.at(index)!, value) < 0
+      this.compareFn(this.list[index], value) < 0
     ) {
       index++;
     }
@@ -39,7 +39,7 @@ export class ArrayPriorityQueue<T> implements PriorityQueue<T> {
   }
 
   toString(): string {
-    return `[${this.list.join(",")}]`;
+    return `[${this.list.join(',')}]`;
   }
 
   *[Symbol.iterator](): Generator<T> {

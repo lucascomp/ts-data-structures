@@ -1,7 +1,7 @@
-import { Nullable } from "../common/nullable";
-import { LinkedList } from "../linked-list/linked-list";
-import { SinglyLinkedList } from "../linked-list/singly-linked-list";
-import { Queue } from "./queue";
+import { Nullable } from '../common/nullable';
+import { LinkedList } from '../linked-list/linked-list';
+import { SinglyLinkedList } from '../linked-list/singly-linked-list';
+import { Queue } from './queue';
 
 export class LinkedListQueue<T> implements Queue<T> {
   private list: LinkedList<T>;

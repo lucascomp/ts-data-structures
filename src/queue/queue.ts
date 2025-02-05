@@ -1,4 +1,4 @@
-import { Nullable } from "../common/nullable";
+import { Nullable } from '../common/nullable';
 
 export interface Queue<T> extends Iterable<T> {
   enqueue(value: T): void;

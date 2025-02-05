@@ -1,6 +1,6 @@
-import { Nullable } from "../common/nullable";
-import { LinkedList } from "./linked-list";
-import { LinkedListNode } from "./linked-list-node";
+import { Nullable } from '../common/nullable';
+import { LinkedList } from './linked-list';
+import { LinkedListNode } from './linked-list-node';
 
 export class DoublyLinkedList<T> implements LinkedList<T> {
   private head: Nullable<LinkedListNode<T>>;
@@ -86,7 +86,7 @@ export class DoublyLinkedList<T> implements LinkedList<T> {
   }
 
   toString(): string {
-    return `[${[...this].join(",")}]`;
+    return `[${[...this].join(',')}]`;
   }
 
   *[Symbol.iterator](): Generator<T> {

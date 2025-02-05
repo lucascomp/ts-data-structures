@@ -1,4 +1,4 @@
-import { Nullable } from "../common/nullable";
+import { Nullable } from '../common/nullable';
 
 export interface LinkedList<T> extends Iterable<T> {
   getFirst(): Nullable<T>;

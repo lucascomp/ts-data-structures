@@ -1,6 +1,6 @@
-import { Nullable } from "../common/nullable";
-import { LinkedList } from "./linked-list";
-import { LinkedListNode } from "./linked-list-node";
+import { Nullable } from '../common/nullable';
+import { LinkedList } from './linked-list';
+import { LinkedListNode } from './linked-list-node';
 
 export class SinglyLinkedList<T> implements LinkedList<T> {
   private head: Nullable<LinkedListNode<T>>;
@@ -61,15 +61,17 @@ export class SinglyLinkedList<T> implements LinkedList<T> {
       return this.removeFirst();
     }
 
-    let curr = this.head;
+    let prev = this.head;
+    let curr = this.head.next;
 
-    while (curr.next && curr.next.next) {
+    while (curr.next) {
+      prev = curr;
       curr = curr.next;
     }
 
-    const last = curr.next!.value;
-    curr.next = null;
-    this.tail = curr;
+    const last = curr.value;
+    prev.next = null;
+    this.tail = prev;
     this.length--;
 
     return last;
@@ -84,7 +86,7 @@ export class SinglyLinkedList<T> implements LinkedList<T> {
   }
 
   toString(): string {
-    return `[${[...this].join(",")}]`;
+    return `[${[...this].join(',')}]`;
   }
 
   *[Symbol.iterator](): Generator<T> {

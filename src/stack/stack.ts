@@ -1,4 +1,4 @@
-import { Nullable } from "../common/nullable";
+import { Nullable } from '../common/nullable';
 
 export interface Stack<T> extends Iterable<T> {
   peek(): Nullable<T>;
