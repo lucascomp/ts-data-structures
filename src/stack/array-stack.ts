@@ -28,10 +28,6 @@ export class ArrayStack<T> implements Stack<T> {
     return this.list.length === 0;
   }
 
-  toString(): string {
-    return `[${this.list.join(',')}]`;
-  }
-
   *[Symbol.iterator](): Generator<T> {
     yield* this.list;
   }

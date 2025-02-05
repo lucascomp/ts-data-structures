@@ -30,10 +30,6 @@ export class LinkedListQueue<T> implements Queue<T> {
     return this.list.size();
   }
 
-  toString(): string {
-    return this.list.toString();
-  }
-
   *[Symbol.iterator](): Generator<T> {
     yield* this.list;
   }

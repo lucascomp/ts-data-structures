@@ -33,10 +33,6 @@ describe.each([['LinkedListQueue', () => new LinkedListQueue<number>()]])(
         expect(queue.isEmpty()).toBe(true);
       });
 
-      it('should print empty queue', () => {
-        expect(queue.toString()).toBe('[]');
-      });
-
       it('should not iterate over any values', () => {
         expect([...queue]).toHaveLength(0);
       });
@@ -68,10 +64,6 @@ describe.each([['LinkedListQueue', () => new LinkedListQueue<number>()]])(
 
       it('should not be marked as empty', () => {
         expect(queue.isEmpty()).toBe(false);
-      });
-
-      it('should print queue', () => {
-        expect(queue.toString()).toBe('[1]');
       });
 
       it('should iterate over queue', () => {
@@ -115,10 +107,6 @@ describe.each([['LinkedListQueue', () => new LinkedListQueue<number>()]])(
 
       it('should not be marked as empty', () => {
         expect(queue.isEmpty()).toBe(false);
-      });
-
-      it('should print queue', () => {
-        expect(queue.toString()).toBe('[1,2,3]');
       });
 
       it('should iterate over queue', () => {

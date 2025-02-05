@@ -48,10 +48,6 @@ describe.each([
       expect(list.isEmpty()).toBe(true);
     });
 
-    it('should print empty list', () => {
-      expect(list.toString()).toBe('[]');
-    });
-
     it('should not iterate over any values', () => {
       expect([...list]).toEqual([]);
     });
@@ -101,10 +97,6 @@ describe.each([
 
     it('should be marked as not empty', () => {
       expect(list.isEmpty()).toBe(false);
-    });
-
-    it('should print list', () => {
-      expect(list.toString()).toBe('[1]');
     });
 
     it('should iterate over list', () => {
@@ -162,10 +154,6 @@ describe.each([
 
     it('should be marked as not empty', () => {
       expect(list.isEmpty()).toBe(false);
-    });
-
-    it('should print list', () => {
-      expect(list.toString()).toBe('[1,2,3]');
     });
 
     it('should iterate over list', () => {

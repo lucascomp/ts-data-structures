@@ -10,6 +10,4 @@ export interface Queue<T> extends Iterable<T> {
   size(): number;
 
   isEmpty(): boolean;
-
-  toString(): string;
 }

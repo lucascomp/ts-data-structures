@@ -85,10 +85,6 @@ export class DoublyLinkedList<T> implements LinkedList<T> {
     return this.length === 0;
   }
 
-  toString(): string {
-    return `[${[...this].join(',')}]`;
-  }
-
   *[Symbol.iterator](): Generator<T> {
     for (let curr = this.head; curr; curr = curr.next) {
       yield curr.value;
