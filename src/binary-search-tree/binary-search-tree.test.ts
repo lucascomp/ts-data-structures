@@ -21,6 +21,10 @@ describe('BinarySearchTree', () => {
       expect(tree.contains(10)).toBe(true);
     });
 
+    it('should not remove non-existing values', () => {
+      expect(() => tree.remove(10)).toThrow();
+    });
+
     it('should not find any min value', () => {
       expect(tree.findMin()).toBeNull();
     });
@@ -74,10 +78,18 @@ describe('BinarySearchTree', () => {
       expect(tree.contains(20)).toBe(true);
     });
 
+    it('should not insert existing value', () => {
+      expect(() => tree.insert(10)).toThrow();
+    });
+
     it('should remove value', () => {
       tree.remove(10);
 
       expect(tree.contains(10)).toBe(false);
+    });
+
+    it('should not remove non-existing values', () => {
+      expect(() => tree.remove(20)).toThrow();
     });
 
     it('should find min value', () => {
@@ -161,10 +173,18 @@ describe('BinarySearchTree', () => {
       expect(tree.contains(25)).toBe(true);
     });
 
+    it('should not insert existing value', () => {
+      expect(() => tree.insert(40)).toThrow();
+    });
+
     it('should remove value at root', () => {
       tree.remove(40);
 
       expect(tree.contains(40)).toBe(false);
+    });
+
+    it('should not remove non-existing values', () => {
+      expect(() => tree.remove(100)).toThrow();
     });
 
     it('should remove value not at root with left and right children', () => {

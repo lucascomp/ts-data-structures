@@ -118,7 +118,7 @@ export class BinarySearchTree<T> implements Iterable<T> {
     value: T,
   ): Nullable<BinarySearchTreeNode<T>> {
     if (!node) {
-      return null;
+      throw new Error(`Value ${value} does not exist in the tree`);
     }
 
     const match = this.compareFn(node.value, value);
