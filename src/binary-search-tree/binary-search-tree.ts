@@ -38,6 +38,16 @@ export class BinarySearchTree<T> implements Iterable<T> {
     return this.findMaxNode(this.root).value;
   }
 
+  size(): number {
+    let length = 0;
+
+    for (const _ of this) {
+      length++;
+    }
+
+    return length;
+  }
+
   isEmpty(): boolean {
     return !this.root;
   }

@@ -33,6 +33,10 @@ describe('BinarySearchTree', () => {
       expect(tree.findMax()).toBeNull();
     });
 
+    it('should have size of 0', () => {
+      expect(tree.size()).toBe(0);
+    });
+
     it('should be marked as empty', () => {
       expect(tree.isEmpty()).toBe(true);
     });
@@ -98,6 +102,10 @@ describe('BinarySearchTree', () => {
 
     it('should find max value', () => {
       expect(tree.findMax()).toBe(10);
+    });
+
+    it('should have size of 1', () => {
+      expect(tree.size()).toBe(1);
     });
 
     it('should be marked as not empty', () => {
@@ -219,6 +227,10 @@ describe('BinarySearchTree', () => {
 
     it('should find any max value', () => {
       expect(tree.findMax()).toBe(70);
+    });
+
+    it('should have correct size', () => {
+      expect(tree.size()).toBe(7);
     });
 
     it('should be marked as not empty', () => {

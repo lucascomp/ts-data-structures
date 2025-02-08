@@ -17,6 +17,10 @@ export default tseslint.config(
     rules: {
       'prettier/prettier': 'error',
       '@typescript-eslint/no-non-null-assertion': 'off',
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
+      ],
     },
   },
 );
